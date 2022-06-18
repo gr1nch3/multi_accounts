@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html' %}
+{% block title%}Profile{% endblock %}
+
+{% block content %}
+
+{% if user.role == 1 %}
+
+<div class="container">
+    <h1>{{ user.first_name }}</h1>
+    <p class="title"> {{ user.email }}</p>
+    <p>class: {{ student.grade }} </p>
+    <hr>
+    <div id="menu">
+    <ul>
+      <li style="padding-right: 50px;">
+        
+        <p class="number-stat">Age</p>
+        <p class="desc-stat">{{ student.age }}</p>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% elif user.role == 2 %}
+
+<div class="container">
+  <h1>{{ user.first_name }}</h1>
+  <p class="title"> {{ user.email }}</p>
+  <p>Class: {{ teacher.grades }}</p>
+  <hr>
+  <div id="menu">
+  <ul>
+    <li style="padding-right: 50px;">
+      
+      <p class="number-stat">Subject</p>
+      <p class="desc-stat">{{ teacher.subjects}}</p>
+      
+    </li>
+  </ul>
+</div>
+</div>
+
+{% else %}
+
+  <h1 style="text-align: center;">404!</h1>
+  <p style="text-align: center;">Page not found</p>
+
+{% endif %}
+
+{%endblock%}

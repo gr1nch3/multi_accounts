@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+{% block title %} Accounts {% endblock %}
+{% block header %} Home {% endblock %}
+
+{% block content %}
+
+	{% for message in messages %}
+		<div class="alert alert-secondary" role="alert">
+			{{ message }}
+		</div>
+	{% endfor %}
+	
+		<div style="height: 0.5em; width: auto;"></div>
+	<div class="row">
+		<div style="margin: 1em; width: 100%;">
+			<div class="card">
+				<div class="card-body">
+						<div class="col-md-12">
+						
+							{% for user in all_users %}
+
+								<h4><a href="{% url 'accounts:details' user.pk %}">{{ user.first_name }}</a></h4>
+								
+								<div>
+									<span class="badge badge-secondary">
+										{{ user.last_name }}
+									</span>
+									<div class="float-right">
+											{% if user.role == 1 %}
+												<span class="badge badge-success">Student</span> 
+											{% elif user.role == 2 %}
+												<span class="badge badge-danger">Teacher</span> 
+											{% endif %}
+										<span class="badge badge-secondary">{{ user.email }}</span> 
+									</div>         
+								</div> 
+								
+								<hr>
+							
+							{% endfor %}
+						</div>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+
+{% endblock %}
